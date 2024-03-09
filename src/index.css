@@ -1,0 +1,64 @@
+/* Montserrat and Open Sans font family */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: rgb(247,247,247);
+}
+/* header background video styling */
+header{
+    background-image: url("./assets/videos/hero/giantScreen2.mp4");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;   
+}
+header::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,  0,  0,  0.5 );
+    z-index: 1; 
+}
+
+button:hover{
+    background-color: #322CB5 !important;
+}
+
+/* Brand component edits */
+.mask{
+    -webkit-mask: linear-gradient(
+        90deg, transparent,white 20%, white 80%, transparent
+    );
+    mask: linear-gradient(
+        90deg, transparent,white 20%, white 80%, transparent
+    );
+}
+.maskAnimation{
+    animation: marquee 30s linear infinite forwards !important;
+}
+@keyframes marquee{
+    to{
+      transform: translateX(-100%);
+    }
+}
+
+/* testimonial navigation effects */
+.allow-cursor{
+    cursor: pointer;
+}
+.allow-cursor:hover{
+    transform: translateX(0.25rem);
+}
+.no-cursor{
+    cursor: auto;
+}
