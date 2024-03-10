@@ -62,3 +62,7 @@ button:hover{
 .no-cursor{
     cursor: auto;
 }
+
+.affected-child:not(:last-child) {
+    margin-inline: 0.5rem;
+}

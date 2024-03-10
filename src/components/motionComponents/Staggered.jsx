@@ -1,14 +1,14 @@
 import { useEffect, useRef } from 'react'
 import { motion, useAnimation, useInView } from 'framer-motion'
 
-const Surface = ({ children, justify = 'center' }) => {
+const Staggered = ({ children, index }) => {
   const ref = useRef(null) //get reference of element to be animated
   const isInView = useInView(ref, { once: true, amount: 0.2 }) //check when referenced element is in view: returns boolean value
   const control = useAnimation() //control to kickstart animation
 
   useEffect(() => {
     if (isInView) {
-      control.start('surface')
+      control.start('delayedSurface')
     }
   }, [isInView, control])
 
@@ -17,23 +17,26 @@ const Surface = ({ children, justify = 'center' }) => {
       opacity: 0,
       y: 40
     },
-    surface: {
+    delayedSurface: index => ({
       opacity: 1,
-      y: 0
-    }
+      y: 0,
+      transition: {
+        duration: 0.5,
+        delay: index * 0.1
+      }
+    })
   }
   return (
     <motion.div
-      ref={ref}
-      variants={variants}
-      initial='hidden'
-      animate={control}
-      transition={{ duration: 1.3 }}
-      className={`flex justify-${justify}`}
+      ref={ref} //reference to this div
+      variants={variants} //giving this motion element access to the variant states
+      initial='hidden' //setting the initial state of the motion element to the "hidden" variant
+      animate={control} //
+      custom={index}
     >
       {children}
     </motion.div>
   )
 }
 
-export default Surface
+export default Staggered;

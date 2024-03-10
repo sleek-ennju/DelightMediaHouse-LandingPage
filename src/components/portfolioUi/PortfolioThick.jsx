@@ -1,8 +1,8 @@
 
 
-const PortfolioThick = ({mt = false, image, services, brandName, description}) => {
+const PortfolioThick = ({mt = false, image, services, brandName, description, order}) => {
   return (
-    <div  className="flex flex-col gap-4 group cursor-pointer">
+    <div  className={`flex flex-col gap-4 group cursor-pointer order-${order}`}>
         <div  className={`${mt && "sm:mt-48"} w-full max-w-[35.5rem] h-[30.5rem] rounded-[0.625rem] mb-4 overflow-hidden group`}>
             <img
                 className="w-full h-full object-cover rounded-[0.625rem] transform scale-105 group-hover:scale-100 transition-all duration-300"   

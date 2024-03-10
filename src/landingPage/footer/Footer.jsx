@@ -42,10 +42,8 @@ const Footer = () => {
                     <img src={advertLogo} className="w-full h-auto object-cover" alt="brand logo" />
                 </a>
             </div>
-          <h3 className="text-base text-[#77808B] my-4">Sampees Global Resources Limited, a distinguished entity in the bakery and confectionery sector, 
-            is officially registered with the Corporate Affairs Commission (CAC).
-          </h3>
-          <p className="text-sm text-black font-normal">Copyright S.G.R LTD</p>
+          <h3 className="text-base text-[#77808B] my-4">Delight Media House, a trailblazer in the dynamic advertising and media industry, is officially recognized and registered with the Corporate Affairs Commission (CAC).</h3>
+          <p className="text-sm text-[#77808B] font-normal">Copyright D.M.H LTD</p>
         </div>
 
         {/* contact group */}
@@ -57,7 +55,7 @@ const Footer = () => {
           </div>
           <div className="flex items-center gap-2">
             <div className="text-white"><MdEmail size={16}/></div>
-            <p className="text-base w-full text-[#77808B]">divinemercyman@gmail.com</p>
+            <p className="text-base w-full text-[#77808B]">delight@delightmediahouse.com</p>
           </div>
           <div className="flex items-center gap-2">
             <div className="text-white"><FaPhoneAlt size={16}/></div>

@@ -6,7 +6,6 @@ import { FaWhatsapp } from "react-icons/fa6";
 import Button from "../ui/button/Button";
 
 const Contact = () => {
-//   const navigate = useNavigate();
   // options for radio input
   const options = ['General enquiry', 'Service enquiry', "Delivery Enquiry"];
 
@@ -86,13 +85,19 @@ const Contact = () => {
       return true;
     }
   }
+  const scrollToHeader = () => {
+    const headerSection = document.getElementById('header');
+    if (headerSection) {
+       headerSection.scrollIntoView({ behavior: 'smooth' });
+    }
+   };
   
   const handleFormSubmission = (e)=>{
     e.preventDefault();
 
     if(validateForm()){
       alert('Your form was submitted successfully!');
-    //   navigate("/");
+      scrollToHeader();
     }
   }
 
@@ -100,7 +105,7 @@ const Contact = () => {
 
 
   return (
-    <div id="contact" className="px-10 md:px-12 py-24 bg-white rounded-[0.625rem]">
+    <div id="contact" className="px-4 md:px-12 py-24 bg-white rounded-[0.625rem]">
       <div className="flex flex-col lg:flex-row justify-between mt-4 gap-16 md:gap-8">
         <div className="lg:flex-[1] flex flex-col items-center lg:items-start gap-8  rounded-[0.625rem] text-black ">
           <div>
