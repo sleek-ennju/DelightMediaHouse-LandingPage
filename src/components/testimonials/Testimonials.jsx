@@ -64,7 +64,7 @@ const Testimonials = () => {
                     className={`flex flex-col xl:flex-row items-start gap-8 absolute w-full ${carouselIndex === index ? 'opacity-100' : 'opacity-0'}`}
                     style={{ transition: 'opacity 0.5s' }}
                 >
-                    <div className="w-full max-w-[7.5rem] mt-5">
+                    <div className="w-full max-w-[5rem] mt-5">
                         <img src={testimonial.logo} className="w-full h-full" alt="brand logo" />
                     </div>
                     <div className="">
@@ -78,7 +78,7 @@ const Testimonials = () => {
                 </div>
             ))}
         </div>
-        <div className="flex justify-between items-center w-full xl:w-[84%] self-end">
+        <div className="flex justify-between items-center w-full xl:w-[88%] self-end">
             <div className="flex gap-6 text-[#A5A5A5] font-header font-semibold overflow-hidden">
                 <AnimatePresence >
                     <div className="relative">

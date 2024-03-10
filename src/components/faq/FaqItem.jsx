@@ -9,7 +9,7 @@ const FaqItem = ({question, ans}) =>{
     return (
         <div className="border-b border-solid border-b-[#77808B] ">
                 <div className="flex items-center justify-between gap-4 mb-4">
-                    <h3 className=" text-xl md:text-2xl font-normal font-header ">{question}</h3>
+                    <h3 className=" text-lg md:text-2xl font-medium font-header ">{question}</h3>
                     <div className="text-base cursor-pointer" onClick={()=> setExpand(!expand)}>
                         {expand ? <FaMinus/> : <FaPlus />}
                     </div>
@@ -21,7 +21,7 @@ const FaqItem = ({question, ans}) =>{
                         animate={{ opacity: 1, height: "auto" }}
                         transition={{ duration: 0.3, ease: "easeInOut" }}
                         exit={{ opacity: 0, height: 0 }}
-                        className={`faq-ans font-body text-base font-light mb-4`}>{ans}</motion.p>
+                        className={`faq-ans font-body text-base text-[#77808B] font-normal mb-4`}>{ans}</motion.p>
                         )}
                 </AnimatePresence>
         </div>
