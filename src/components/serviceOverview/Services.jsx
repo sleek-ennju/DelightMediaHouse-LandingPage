@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Surface from "../motionComponents/Surface";
 import ScrollSurface from "../motionComponents/ScrollSurface";
 import Staggered from "../motionComponents/Staggered";
 import {motion} from "framer-motion";
@@ -34,7 +35,7 @@ const Services = () => {
         <div id="services" className="flex flex-col gap-12 sm:flex-row sm:gap-4 mx-4 md:mx-12 my-20 sm:my-24">
             <div className="flex-[1] flex flex-col gap-4">
                 <h2 className="text-[#77808B] text-base font-medium font-body">Our Services</h2>
-                <div className="flex flex-col gap-10 sm:gap-8">
+                <div className="flex flex-col gap-4 sm:gap-8">
                     {servicesData.map((service,index) => (
                         <Staggered key={index} index={index}>
                             <h3 key={service.title} onClick={()=> setServiceCategory(service)} className={`min-[250px]:text-[2.5rem] sm:text-5xl md:text-[3.5rem] text-[#3A86FF] font-bold text-left cursor-pointer  ${service.id === serviceCategory.id ? "opacity-80" : "opacity-20"}  transition-all duration-300`}>{service.title}</h3>
@@ -43,7 +44,7 @@ const Services = () => {
                 </div>
             </div>
             <div className="flex-[1]">
-                
+                <Surface>
                     <div>
                         <motion.div 
                         key={serviceCategory.banner}
@@ -65,7 +66,7 @@ const Services = () => {
                         transition={{duration:0.3}}
                         className="text-base leading-8">{serviceCategory.description}</motion.h3>
                     </div>
-               
+                </Surface>
             </div>
         </div>
     </ScrollSurface>

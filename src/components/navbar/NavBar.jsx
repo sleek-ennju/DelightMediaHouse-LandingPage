@@ -59,7 +59,7 @@ const NavBar = () => {
     };
     
     return (
-        <nav className={`w-full h-[13dvh] fixed -top-1 left-0 z-50  ${isScrolled ? "bg-white shadow-sm" : "bg-transparent"} transition-all duration-300`}>
+        <nav className={`w-full h-[12dvh] fixed -top-1 left-0 z-50  ${isScrolled ? "bg-white shadow-sm" : "bg-transparent"} transition-all duration-300`}>
             <div className="flex justify-between items-center h-full mx-4 md:mx-12">
                 <div className="w-16 h-auto">
                     <a href="#header">

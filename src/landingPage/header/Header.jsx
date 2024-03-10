@@ -17,6 +17,7 @@ const Header = () => {
             autoPlay
             loop 
             muted
+            playsInline
             onCanPlay={() => setPlayBack()}
             className="absolute w-full h-full object-cover"
         ></video>
