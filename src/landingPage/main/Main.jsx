@@ -8,7 +8,7 @@ import Testimonials from "../../components/testimonials/Testimonials";
 
 const Main = () => {
   return (
-    <div className="mt-16">
+    <div className="mt-16 relative overflow-x-clip">
       <About />
       <Services />
       <Portfolio />

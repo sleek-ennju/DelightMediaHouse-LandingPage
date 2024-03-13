@@ -1,9 +1,9 @@
 import { FaArrowRight } from "react-icons/fa6";
 
-const Button = ({title, color = "white", bg = "#3A86FF", arrow = false, action}) => {
+const Button = ({type = "button", title, color = "white", bg = "#3A86FF", arrow = false, action}) => {
   return (
     <button 
-        type="button"
+        type={type}
         onClick={action}
         className="group flex items-center gap-4 py-[0.55rem] px-6 rounded-[0.625rem] font-medium text-base transition-all duration-300"
         style={{color:color, backgroundColor:bg , hover:{backgroundColor:"#322CB5"}}}

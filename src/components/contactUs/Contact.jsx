@@ -3,11 +3,15 @@ import { FaFacebook } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa6";
 import { FaTwitter } from "react-icons/fa6";
 import { FaWhatsapp } from "react-icons/fa6";
+import { ImSpinner9 } from "react-icons/im";
 import Button from "../ui/button/Button";
+import emailjs from '@emailjs/browser';
+import { toast } from 'react-toastify';
 
 const Contact = () => {
   // options for radio input
   const options = ['General enquiry', 'Service enquiry', "Delivery Enquiry"];
+  const [isLoading, setIsLoading] = useState(false);
 
   // form data states
   const [formData, setFormData] = useState({
@@ -30,8 +34,7 @@ const Contact = () => {
 
   // function for handling change in input state
   const handleChange = e => {
-    const { name, value } = e.target
-    console.log("name:", name, "value:", value);
+    const { name, value } = e.target;
 
     setFormData({
       ...formData,
@@ -43,7 +46,6 @@ const Contact = () => {
       [name]: ''
     })
 
-    console.log("formData:",formData);
   }
 
   // email checker
@@ -96,8 +98,46 @@ const Contact = () => {
     e.preventDefault();
 
     if(validateForm()){
-      alert('Your form was submitted successfully!');
-      scrollToHeader();
+      setIsLoading(true);
+
+      // emailjs variables
+      const serviceId = 'contact_service'
+      const templateId = 'contact-form'
+      const publicKey = 'LYElUK7pYv1UvzFCu'
+
+      // create new object that contains dynamic template params
+      const templateParams = {
+        subject: formData.selectedOption,
+        message: formData.message,
+        name: formData.firstName + ' ' + formData.lastName,
+        email: formData.email,
+        phone: formData.phoneNumber
+      }
+
+
+      emailjs.send(serviceId, templateId, templateParams, publicKey)
+      .then(
+        response => {
+          setIsLoading(false);
+          toast.success("Message successfully sent!", {position: "top-right"});
+          console.log(response.status);
+
+          // reset form data
+          setFormData({
+            firstName:"",
+            lastName:"",
+            email: "",
+            phoneNumber:"",
+            message:""
+          })
+          scrollToHeader();
+        })
+      .catch(
+        error => { 
+          toast.success("Message sending failed!", {position: "top-right"});
+          console.log("error:", error.text);
+        }
+      )
     }
   }
 
@@ -125,7 +165,7 @@ const Contact = () => {
           </div>
         </div>
         <div className="lg:flex-[2] px-2 md:px-8">
-            <form action="#" method="post" className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form onSubmit={handleFormSubmission} className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="col-span-2 md:col-auto">
                 <label htmlFor="firstName" className="font-poppins font-medium mb-4 flex items-center gap-1">First Name <span className="text-blossom">*</span></label>
                 <input type="text" onChange={handleChange} value={formData.firstName} name="firstName" id="firstName" className="block border-b border-solid border-black bg-transparent p-2 outline-none w-full"/>
@@ -172,7 +212,7 @@ const Contact = () => {
                 {errors.message && <p className="text-red-500 text-sm mt-2">{errors.message}</p>}
                 </div>
                 <div className="justify-self-end col-span-2">
-                <Button title="Send Message" type="submit" action={handleFormSubmission} />
+                <Button title={isLoading ? <ImSpinner9 className="animate-spin" size={22} /> : "Send"} type="submit" />
                 </div>
             </form>
         </div>
