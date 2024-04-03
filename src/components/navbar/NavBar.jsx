@@ -54,7 +54,8 @@ const NavBar = () => {
     const scrollToContact = () => {
         const contactSection = document.getElementById('contact');
         if (contactSection) {
-           contactSection.scrollIntoView({ behavior: 'smooth' });
+            contactSection.scrollIntoView({ behavior: 'smooth' });
+            setRevealNav(false);
         }
     };
     
